@@ -15,8 +15,8 @@ This is to create a bitmap file using Blob type written by pure Vim script.
 
     " write 32 bit bitmap
     let path32 = expand('~/Desktop/32bit.bmp')
-    let rgba = 0zff00ff00
-    call bitmap#write(repeat([repeat([rgba], width)], height), path32)
+    let rgbR = 0zff00ff00
+    call bitmap#write(repeat([repeat([rgbR], width)], height), path32)
 
     echo bitmap#read(path24)
     " {

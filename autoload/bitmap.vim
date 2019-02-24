@@ -62,10 +62,6 @@ function! s:slice(bs, offset, length) abort
     return [ a:bs[(a:offset):(a:offset + a:length - 1)], a:offset + a:length ]
 endfunction
 
-function! s:to_hex(xs) abort
-    return map(deepcopy(a:xs), 'printf("%02X", v:val)')
-endfunction
-
 function! s:to_integer(bs) abort
     let sum = 0
     let n = 0
@@ -90,10 +86,6 @@ function! s:to_string(bs) abort
         let s .= nr2char(b)
     endfor
     return s
-endfunction
-
-function! s:string_to_bytes(str) abort
-    return map(split(a:str, '\zs'), 'char2nr(v:val)')
 endfunction
 
 function! s:file_header(bs) abort
@@ -172,13 +164,13 @@ function! bitmap#read(path, ...) abort
                 let [data, offset] = s:bit32_imagedata(bs, offset, info_header)
                 let dict['data'] = data
             else
-                echomsg printf('Do not suport %d bit bitmap', info_header.bit_count)
+                throw printf('[bitmap]Do not suport %d bit bitmap', info_header.bit_count)
             endif
         endif
         let dict['file_header'] = file_header
         let dict['info_header'] = info_header
     else
-        echomsg 'Not BMP File Format'
+        throw '[bitmap]Not BMP File Format'
     endif
     return dict
 endfunction

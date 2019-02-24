@@ -1,20 +1,24 @@
 
-# vim-bmp
+# vim-bitmap
+
+This is to create a bitmap file using Blob type written by pure Vim script.
+
+## usage
 
     let width = 10
-    let heigt = 10
+    let height = 10
 
     " write 24 bit bitmap
     let path24 = expand('~/Desktop/xxx.bmp')
     let rgb = 0zff00ff
-    call bmp#write(repeat([repeat([rgb], width)], height), path24)
+    call bitmap#write(repeat([repeat([rgb], width)], height), path24)
 
     " write 32 bit bitmap
     let path32 = expand('~/Desktop/xxx.bmp')
     let rgba = 0zff00ff00
-    call bmp#write(repeat([repeat([rgba], width)], height), path32)
+    call bitmap#write(repeat([repeat([rgba], width)], height), path32)
 
-    echo bmp#read(path24)
+    echo bitmap#read(path24)
     " {
     "   'file_header': {
     "     'off_bits': 54, 'reserved1': 0, 'type': 'BM', 'reserved2': 0, 'size': 374,
@@ -39,7 +43,7 @@
     " }
 
     " read only bmp header.
-    echo bmp#read(path24, 1)
+    echo bitmap#read(path24, 1)
     " {
     "   'file_header': {
     "     'off_bits': 54, 'reserved1': 0, 'type': 'BM', 'reserved2': 0, 'size': 374,

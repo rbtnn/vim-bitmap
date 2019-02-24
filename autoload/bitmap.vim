@@ -157,7 +157,7 @@ function! s:bit32_imagedata(xs, offset, info_header) abort
     return [data, offset]
 endfunction
 
-function! bmp#read(path, ...) abort
+function! bitmap#read(path, ...) abort
     let dict = {}
     let headeronly = 0 < a:0 ? a:1 : 0
     let bs = readfile(a:path, 'B')
@@ -183,7 +183,7 @@ function! bmp#read(path, ...) abort
     return dict
 endfunction
 
-function! bmp#write(data, path) abort
+function! bitmap#write(data, path) abort
     let bit_count = len(a:data[0][0]) * 8
     let bitmap_format = s:windows_bitmap
     " let bitmap_format = s:os2_bitmap

@@ -212,11 +212,11 @@ function! bitmap#write(data, path) abort
         for w in range(0, width - 1)
             if bit_count is 24 || bit_count is 32
                 " Blue
-                let data += s:integer_to_bytes(a:data[h][w][0], 1)
+                let data += s:integer_to_bytes(a:data[h][w][2], 1)
                 " Green
                 let data += s:integer_to_bytes(a:data[h][w][1], 1)
                 " Red
-                let data += s:integer_to_bytes(a:data[h][w][2], 1)
+                let data += s:integer_to_bytes(a:data[h][w][0], 1)
             endif
             if bit_count is 32
                 " Reserved

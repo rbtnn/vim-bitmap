@@ -152,7 +152,7 @@ endfunction
 function! bitmap#read(path, ...) abort
     let dict = {}
     let headeronly = 0 < a:0 ? a:1 : 0
-    let bs = readfile(a:path, 'B')
+    let bs = call('readfile', [(a:path), 'B'] + (headeronly ? [100] : []))
     let [file_header, offset] = s:file_header(bs)
     if file_header.type is 'BM'
         let [info_header, offset] = s:info_header(bs, offset)

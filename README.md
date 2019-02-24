@@ -1,7 +1,7 @@
 
 # vim-bitmap
 
-This is to create a bitmap file using Blob type written by pure Vim script.
+This provides to write and read a bitmap file using Blob type written by pure Vim script.
 
 ## usage
 
